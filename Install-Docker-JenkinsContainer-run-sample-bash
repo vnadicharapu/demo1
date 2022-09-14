@@ -1,0 +1,68 @@
+-
+  ping google.com
+  sudo yum install -y yum-utils
+  sudo yum-config-manager \
+    --add-repo \
+    https://download.docker.com/linux/rhel/docker-ce.repo
+  sudo yum-config-manager --disable docker-ce-stable
+  sudo yum update
+  sudo yum install docker
+  sudo service docker start
+  sudo usermod -aG docker jenkins
+  # user shoud have root previlages 
+
+- 
+  #installing docker compose
+  wget https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)
+
+   sudo mv docker-compose-$(uname -s)-$(uname -m) /usr/local/bin/docker-compose 
+   sudo chmod -v +x /usr/local/bin/docker-compose
+   docker-compose version
+-
+   docker pull jenkins/jenkins
+   docker images
+   docker info | grep -i root
+   sudo du -sh /var/lib/docker
+
+----------------docker-compose.yml--------
+version: '3'
+services:
+  jenkins:
+    container_name: jenkins
+    image: jenkins/jenkins
+    ports:
+      - "8080:8080"
+    volumes:
+      - "$PWD/jenkins_home:/var/jenkins_home" #mkdir jenkins_home under /home/jenkins-data/
+    networks:
+      - net
+networks:
+  net:
+
+# id
+# sudo chown 1000:1000 jenkins_home -R
+# docker-compose up -d
+# docker ps -l
+# docker logs -f jenkins (incase of error check the permission sudo chown 1000:1000 as jenkins in container has 1000 id)
+
+-------------run a script -------------------
+
+#!/bin/bash
+name=$1
+lastname=$2
+show=$3
+
+if [ "$show" = "true" ]; then
+  echo "hello, $name $lastname"
+else
+  echo "please mark show"
+fi
+
+# sudo chmod +x jenkins-bash-script.sh
+# jenkins-bash-script.sh vijay nadi true
+# docker cp jenkins-bash-script.sh jenkins:/tmp/jenkins-bash-script.sh
+# docker exec -it jenkins bash
+
+# injenkins, create freestyle-> selecct 'paramiterised project' -> define parameter --- and in build "execute bash" 
+# in build section " /tmp/jenkins-bash-script.sh $firstname $lastname $check "
+
