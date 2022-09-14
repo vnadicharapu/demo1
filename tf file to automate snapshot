@@ -1,0 +1,63 @@
+
+Sign in
+Sign up
+
+Instantly share code, notes, and snippets.
+tdsacilowski/terraform-aws-instance-create-snapshot-before-destroy.tf
+Last active 2 months ago
+Code
+Revisions 3
+Stars 3
+terraform-aws-instance-create-snapshot-before-destroy.tf
+variable "sdd_snapshot_description" {
+  description = "This is the description that will be used to identify the snapshots of our data volume. We will filter against this value."
+  default     = "sdd-data-snapshot"
+}
+
+provider "aws" {}
+
+// Get the latest version of our /dev/sdd snapshot
+data "aws_ebs_snapshot" "sdd_snapshot" {
+  most_recent = true
+
+  filter {
+    name   = "description"
+    values = ["${var.sdd_snapshot_description}"]
+  }
+}
+
+/*
+Create our test instance with a root volume and
+/dev/sdd volume based on the most recent sdd snapshot
+*/
+resource "aws_instance" "instance" {
+  ami           = "ami-db48ada1"
+  instance_type = "t2.micro"
+  key_name      = "tds-sandbox"
+
+  root_block_device {
+    volume_size           = "20"
+    volume_type           = "gp2"
+    delete_on_termination = true
+  }
+
+  ebs_block_device {
+    device_name = "/dev/sdd"
+    volume_size = "20"
+    volume_type = "gp2"
+
+    // We can allow this to be deleted since we only care about the snapshots
+    delete_on_termination = true
+
+    encrypted   = false
+    snapshot_id = "${data.aws_ebs_snapshot.sdd_snapshot.id}"
+  }
+
+  // Create snapshot of data volume before destroying
+  provisioner "local-exec" {
+    command = "aws ec2 create-snapshot --description ${var.sdd_snapshot_description} --volume-id $(aws ec2 describe-volumes --filters Name=attachment.instance-id,Values=${self.id} Name=attachment.device,Values=/dev/sdd --query 'Volumes[*].{ID:VolumeId}' --output text)"
+    when    = "destroy"
+  }
+}
+ughstudios commented on 23 Oct 2021
+
