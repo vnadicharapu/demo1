@@ -1,0 +1,69 @@
+Dockerfile
+
+FROM centos:7
+RUN yum -y install openssh-server
+RUN useradd remote-user && \
+    echo "1234" | passwd remote-user --stdin && \
+    mkdir /home/remote-user/.ssh && \
+    chmod 700 /home/remote-user/.ssh
+COPY remote-key.pub /home/remote-user/.ssh/authorized_keys
+RUN chown remote-user:remote-user -R /home/remote-user/.ssh/ && \
+    chmod 600 /home/remote-user/.ssh/authorized_keys
+RUN /usr/sbin/sshd-keygen
+CMD /usr/sbin/sshd -D
+
+----------error solution--------------------
+
+#Resolution:
+
+1 - Change the from instruction and point to centos 7
+
+FROM centos:7
+
+2- Keep using centos 8 and modify these lines:
+
+Change this
+
+RUN useradd remote_user && \
+    echo "1234" | passwd remote_user  --stdin && \ # Passwd command is deprecated on centos:8
+    mkdir /home/remote_user/.ssh && \
+    chmod 700 /home/remote_user/.ssh
+to this:
+
+RUN useradd remote_user && \
+    echo "remote_user:1234" | chpasswd && \
+    mkdir /home/remote_user/.ssh && \
+    chmod 700 /home/remote_user/.ssh
+~
+--------------------------------------------------------------
+
+Edit docker compose file:
+
+
+version: '3'
+services:
+  jenkins:
+    container_name: jenkins
+    image: jenkins/jenkins
+    ports:
+      - "8080:8080"
+    volumes:
+      - "$PWD/jenkins_home:/var/jenkins_home"
+    networks:
+      - net
+  remote_host:
+    container_name: remote-host
+    image: remote-host
+    build:
+      context: centos7
+    networks:
+      - net
+networks:
+  net:
+
+
+# before builing create a new folder "mkdir centos7" and "ssh-keygen -f remote-key"
+# try ssh -i remote-key remote-user@remote_host
+# docker cp private-key jenkins:/tmp/privatekey
+# in jenkins--> install ssh plugin and copy privatekey contain in creditials config
+-----------------------------------------------------------------------------------------------
