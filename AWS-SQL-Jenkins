@@ -1,0 +1,103 @@
+edit Dockerfile under centos7 dir to install aws cli and mysql in remote host
+
+FROM centos:7
+RUN yum -y install openssh-server
+RUN useradd remote-user && \
+    echo "1234" | passwd remote-user --stdin && \
+    mkdir /home/remote-user/.ssh && \
+    chmod 700 /home/remote-user/.ssh
+COPY remote-key.pub /home/remote-user/.ssh/authorized_keys
+RUN chown remote-user:remote-user -R /home/remote-user/.ssh/ && \
+    chmod 600 /home/remote-user/.ssh/authorized_keys
+RUN /usr/sbin/sshd-keygen
+RUN yum -y install mysql
+RUN curl -O https://bootstrap.pypa.io/pip/2.7/get-pip.py && \
+    python get-pip.py && \
+    pip install awscli --upgrade
+CMD /usr/sbin/sshd -D
+
+# to build
+# docker-compose build
+# to recreate remote-host container
+# docker-compose up -d
+-----------------------------------------
+
+docker-compose.yml
+
+version: '3'
+services:
+  jenkins:
+    container_name: jenkins
+    image: jenkins/jenkins
+    ports:
+      - "8080:8080"
+    volumes:
+      - "$PWD/jenkins_home:/var/jenkins_home"
+    networks:
+      - net
+  remote_host:
+    container_name: remote-host
+    image: remote-host
+    build:
+      context: centos7
+    volumes:
+      - "$PWD/aws-s3.sh:/tmp/script.sh"  #for script backup incase container removed "docker rm -fv remote-host"
+    networks:
+      - net
+  db_host:
+    container_name: db
+    image: mysql:5.7
+    environment:
+      - "MYSQL_ROOT_PASSWORD=1234"
+    volumes:
+      - "$PWD/db_data:/var/lib/mysql"
+    networks:
+      - net
+networks:
+  net:
+
+
+# docker-compose up -d
+# docker exec -it db bash
+# mysql -u root -p   (password 1234)
+
+
+--------------------------
+jenkins> docker exec -it remote-host bash
+remote-user> mysql -u root -h db_host -p
+mysql> show databases;
+create database testdb;
+create table info (name varchar(20), lastname varchar(20), age int(2));
+show tables;
+insert into info values ('vijay', 'nadi', 25);
+desc info;
+select * from info;
+
+#sql dump in remote-host
+mysqldump -u root -h db_host -p testdb > /tmp/db.sql
+export aws access ky and private key
+aws s3 cp /tmp/db.sql s3://jenkins-manual/db.sql
+
+-----------------------
+backup with sh script in remote-host
+
+#/bin/bash
+
+DATE=$(date +%H-%M-%S)
+BACKUP=db-$DATE.sql
+
+DB_HOST=$1
+DB_PASSWORD=$2
+DB_NAME=$3
+AWS_SECRET=$4
+BUCKET_NAME=$5
+
+mysqldump -u root -h $DB_HOST -p$DB_PASSWORD $DB_NAME > /tmp/db-$DATE.sql && \
+export AWS_ACCESS_KEY_ID=AKIAWGJWQJ3IZGLG57EJ && \
+export AWS_SECRET_ACCESS_KEY=$AWS_SECRET && \
+echo "uploading your db $BACKUP" && \
+aws s3 cp /tmp/db-$DATE.sql s3://$BUCKET_NAME/$BACKUP
+
+
+--------------------
+build freestyle job with parameterized and add db-pass and aws private key to global credintials and selct in build env
