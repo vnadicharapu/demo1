@@ -1,0 +1,147 @@
+
+Ather Ahmed
+Ather178@gmail.com | Cell: 602-777-1635 
+
+
+Summary:
+
+9+ years of experience in Information Technology Infrastructure Services (ITIS) as an Application Support Analyst with good analytical, communication and organizational skills having worked with various clients like Deutsche Bank, American Express, Fox Filmed Entertainment and Putnam Investments. Looking for a role in Application Support / Production Support / DevOps / CyberArk Engineer Positions.
+
+ Technical Skills:
+	
+Operating System		Linux
+Programming Languages	Unix Shell Scripting (bash), Oracle SQL
+Databases & Tools	Oracle, TOAD, Manage Engine, FrameFlow, FlipFactory, confluence, Service Now, JIRA, AutoSys, Control –M
+Familiarity with other tools	Jenkins, Splunk, GitHub, BitBucket
+
+
+Education: B.E. (Mechanical Engineering), Osmania University.
+
+Relevant Experience:
+
+Project 1: DB Production Support
+Duration: Sept 2021 - Present
+Location: Cary, NC
+Employer: HCL America Inc.
+Title: Tech Lead
+
+Description:
+Supporting the trading and investment applications where various applications get data from vendor or other front office applications and process and load data into database as per the business logic. Database needs to be updated before the start of the business. It is critical to the business as it deals with the financial data for the client. In case of any issues arising in the running of the application, the team members need to identify the cause of the failure and also the solution to it and update its status at regular intervals.
+
+
+
+
+
+
+
+
+
+
+
+
+
+Roles and Responsibilities:
+
+	Monitoring hundreds of jobs in Control-M and fixing issues arising due to job failures. This is important as most of the data flow happens to and from upstream to downstream applications via these jobs.
+	Monitoring Performance and Services on Unix Servers in production environment via Geneos and working on any issues on the servers.
+	Troubleshoot and fix issues arising at any point of the trade life cycle – I.e. booking, pre-vesting, post vesting, position and balance and settlements.
+	Provide resolutions to incidents, work on issues escalated by L1 Team.
+	Fix amends and oversee issues with proper escalation to meet critical deadlines and Service Level Agreements (SLA).
+	 Maintain documentation of the problems occurred and actions taken, writing KBs and update known issues in confluence.
+	 Focus on quickly resolving or escalating and engaging proper teams for business-critical events to ensure applications are working fine. 
+	Control-M Job Scheduling Activities -Validation that all jobs start at scheduled time to meet various business SLA needs. 
+	Participate and support in weekly releases of the application(s), DR failover, deployments.
+	Provide Weekend support on rotational basis.
+
+
+
+
+
+
+Project 2: Amex AD Support
+Duration: Aug. 2016 – June 2019
+Location:  Phoenix, AZ
+Employer: Cognizant Technology Solutions
+Title: CyberArk Engineer
+
+Description:
+Actively involved in supporting/maintenance of Privileged Access Management – CyberArk Enterprise Password Vault (EPV). Focused on making sure passwords are securely stored and rotated periodically without issues on different types of devices for around 75000 privileged accounts within Amex.
+
+
+
+
+
+Roles and Responsibilities:
+
+	Management of various types of accounts and passwords like Unix root, Windows Administrator, Database (MS SQL, Oracle, Postgres) and making sure that only authorized users have access to the privileged accounts.
+	Setting up meetings with different teams within the organization and introducing them to CyberArk PAS to encourage them to setup automatic password management for privileged accounts.
+	Requirement gathering from users on the type(s) of privileged accounts they want to automatically manage, determine the best option for their use case and set up the accounts accordingly in the CyberArk PAS.
+	Windows service account and usage setup  - i.e automatic password management for service IDs for windows services, scheduled tasks, IIS application pools.
+	 Creating, Managing and maintenance of EPV safes, objects, privileged directories, Object Level Access Safes.  Creating privileged groups in IIQ  and map them to respective safes to allow user access to the safes. 
+	Creating logon/reconcile accounts to facilitate reconcile operations for AD authenticated accounts or work with users to have them created on their devices.
+	 Troubleshoot and fix issues related to user access,  various accounts’ password verification failures, password change failures and  password reconciliation failures.
+	 Arranging and coordinating meetings with users to gather information on required plug-ins,  create plug-in requests and work with Dev team and users until closure. Also work on modification of plug-ins as required for automatic password management for various devices.
+	Understanding plug-in functionality, creating process flow diagram, updating process and prompts files to modify existing plug-ins in order to manage accounts automatically.
+	 Setting up Auto-Detect processes for Automatic detection and auto-provisioning local admin accounts for computer objects from Active Directory. 
+	Generate inventory reports and activity reports for compliance and make sure there’s no duplicate account in EPV.
+	Set up alerts for server performance via FrameFlow to monitor servers and maintenance of Web Servers and Application servers (CPM)  for EPV. 
+	Implement changes during change control process – CPM servers patching, Perform Bulk upload/bulk modification of accounts in EPV via PACLI jobs.
+	Writing SQL/ Bash/PowerShell scripts to automate various tasks i.e. checking for duplicate accounts, retrieving user and group information, determining user access to different safes and privileged accounts, safe and group ownership information etc.
+	Updating user documentation to include Service Now knowledge bases (KBs) and self help documents for users, providing resolutions to incidents in a timely manner (i.e. to meet the SLA requirements).
+	Using CYBR tool on CPM servers and Web Servers to gather CPM logs and Web Application logs to troubleshoot recurring issues.
+	Adding/removing providers in CyberArk  Application Identity Manager (AIM) to facilitate automatic LARA deployments, troubleshoot issues in case of deployment failures arising due to login failure or incorrect passwords. 
+	Provide on-call support for critical issues.
+
+
+Project 3: FOX DAM Support
+Duration: Dec. 2011 – August 2016
+Location: Hyderabad, India.
+Employer: Cognizant Technology Solutions
+Title: Tech Lead.
+
+
+ Description:
+Supporting the client’s Digital Asset Management (DAM) System which consists of management tasks and decisions surrounding the ingestion, annotation, cataloguing, storage, retrieval and distribution of digital assets. The goal of the Support Team is to make sure that the application is up and running 24/7 and that the digital assets are being delivered to and from various vendors of the client across the globe. 
+
+
+
+Roles and Responsibilities:
+
+	Requirement gathering from users on what level of access is required to access digital assets under various titles/seasons/episodes.
+	Creating, managing and maintaining the user accounts, user groups and security policies to provide appropriate user access to digital assets. 
+	Troubleshoot issues related to user access, login, view, upload, download, transfer of digital assets to and from various vendors.
+	Making sure that the digital assets are being ingested successfully within the system and  are being tagged to correct titles/seasons/episodes and are accessible to authorized users in a timely fashion – fix them in case of issues.
+	Making sure that the video assets are generating a thumbnail and are playable – troubleshoot and fix the issues accordingly using flipfactory.
+	Set up alerts for server performance via Manage Engine and perform maintenance of web servers and application servers.
+	Making sure that the digital assets are available to users at a high download/upload speed with Akamai, which is a Content Distribution Network (CDN).
+	Driving High severity issues which require immediate escalation and follow up. 
+	System monitoring including processes monitoring, log file analysis, disk space analysis, performance analysis. 
+	Implementing changes during the change control process – updating and adding user guide on the Web Server, Adding New titles/seasons/Episodes in the Application, code deployment from QA to Prod servers.
+	Focus on quickly resolving or escalating and engaging proper teams for business critical events to ensure applications are working fine. 
+	Health Checks on Linux Based Production Servers – JBOSS, Apache
+	Automating various JIRA tasks by creating shell scripts to reduce manual efforts and time taken for big tasks like generating daily/weekly reports, making bulk changes to accounts, user groups, policies, tagging digital assets to respective titles, seasons and episodes, deleting orphaned or corrupted assets, setting up alerts, automated emails.
+	Execute test cases using Jenkins.
+	Prepare KT documents and updating confluence to share knowledge.
+	Work on various scom and splunk alerts.
+
+
+
+Project 4: Putnam Investments
+Duration: July 2010 – Dec 2011
+Location: Pune, India
+Employer: Cognizant Technology Solutions.
+Title: Systems Analyst
+
+Description: 
+Supporting the trading and investment environment for the Order Management System (OMS) applications where all the applications get data from vendor or other applications and process and load data into database as per the business logic. Database needs to be updated before the start of the business. It is critical to the business as it deals with the financial data for the client. In case of any issues arising in the running of the application, the team members need to identify the cause of the failure and also the solution to it and update its status at regular intervals. 
+
+Roles and Responsibilities: 
+	The Operational Activities Includes  Providing 24 x 7 cover of the bridge area. 
+	Monitoring Performance and Services on Unix Servers in production environments. 
+	Health Checks on Sun Solaris Based Production Servers. Driving High severity issues which require immediate escalation and follow up. 
+	Provide first level resolution to incidents. 
+	System monitoring includes processes monitoring, log file analysis, disk space analysis, performance analysis. 
+	Fix amends and oversee issues with proper escalation to meet critical deadlines and Service Level Agreements (SLA).
+	 Maintain documentation of the problems occurred and actions taken. Hands on experience on homegrown legacy Putnam applications like XFI which require know-how of day to day trading operations.
+	 Focus on quickly resolving or escalating and engaging proper teams for business critical events to ensure applications are working fine. 
+	AutoSys Job Scheduling Activities -Validation that all jobs start at scheduled time to meet various business SLA needs. Changing Job Status, Force Job Starts, Killing Jobs, and checking associated job logs for errors and resolution.
