@@ -26,3 +26,15 @@ container; sleep 1; done "  -- To launch a daemonized container
  14. systemctl status docker - registry -- to observe the status
  15.docker tag ubuntu:12.04 ubuntuproj:ver1 -- adding tag to the images
  16. docker commit -m "version 1.1" -a "raushan" ubuntuproj ubuntu:1.1  -- commiting a new version of image to re-use/ customizing
+ 17. docker run -d --name web -p 80:80 httpd 
+ 18. docker inspect web |grep IPAddress  -- to ip of container
+19. curl –s http://<IPAddress of Container>:<Container port>  - to access webpage
+20. docker run --name db -e MYSQL_ROOT_PASSWORD=password -d mysql:latest -- running a db cotaininer
+21. docker run -d -P --name myweb --link db:webdb tomcat  -- linking contianer to db
+22. docker inspect -f "{{ .HostConfig.Links }}" myweb -- to show the linking status
+volumes
+23. docker volume create my-vol  -- create a volume
+24. docker volume ls
+25. docker volume inspect my-vol
+26. docker run -dp 80:80 -- name webapp -v my-vol:/usr/local/apache2/htdocs httpd  - stop the container and mount the volume
+27. docker volume rm my-vol and docker volume prune
