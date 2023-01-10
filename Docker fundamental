@@ -1,0 +1,28 @@
+1. docker info                                             -- lists all info/ properties of docker like cpu, process
+2. sudo service docker start/stop/status                   -- starting the docker engine
+3. docker run --rm=false -i -t ubuntu:latest /bin/bash     -- To launch an interactive container
+      Note:
+        • –i flag -> to make an interactive connection using standard input (STDIN) in container.
+         • –t flag -> to assign a pseudo terminal/TTY inside the container that attaches stdin and stdout.
+          • --rm=false -> to automatically remove the container when it exits. Usually, we use --rm flag for
+              commands that run-in foreground, to clean up the container after the command has completed
+              
+4. ps aux -- To list the processes running on the container
+5. ctrl+P+Q -- to exit from container without killing
+6. ps -a -- to list all terminated and running containers
+7. docker update --cpu-shares 512 -m 10M --memory-swap -1 <container Id> --To update the container’s CPU Shares and memory configuration 
+8. docker inspect <container id> -- to verify the updated cpu share
+9. docker run --name my_daemonized -d ubuntu /bin/sh -c "while true; do echo my daemonized
+container; sleep 1; done "  -- To launch a daemonized container
+  A simple while loop is used in an ubuntu bash shell to create an ongoing background process to print my
+        daemonized container with a lag of 1 second.
+          Note:
+              • -d flag -> to run a container in the background.
+              • --name=container_name -> to assign a user-defined name to container.
+ 10. docker logs my_daemonized -- to see standard output of conainer running in background
+ 11. docker exec -d my_daemonized mkdir /tmp/test -- creating a dir in a conatainer background
+ 12. docker pull <image_name>: tag  -- to pull images from dockerhub
+ 13. docker run -d -p 5000:5000 --restart=always --name registry registry:2 --You can run the local registry
+ 14. systemctl status docker - registry -- to observe the status
+ 15.docker tag ubuntu:12.04 ubuntuproj:ver1 -- adding tag to the images
+ 16. docker commit -m "version 1.1" -a "raushan" ubuntuproj ubuntu:1.1  -- commiting a new version of image to re-use/ customizing
