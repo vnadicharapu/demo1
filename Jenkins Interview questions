@@ -50,3 +50,14 @@ f. Test results analyzer
 g. junit
 h. ssh
 i. ansible
+
+6. Have you used Jenkins for CI or CD processes? Can you describe them?
+
+7. What type of jobs are there? Which types have you used?
+
+Freestyle Project
+Pipeline
+Multiconfiguration Projects
+Folder
+GitHub organization
+Mutlibranch Pipeline
