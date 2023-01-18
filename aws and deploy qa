@@ -1,0 +1,46 @@
+EC2, IAM, VPC, ELB, Autoscaling groups, Route 53, SNS, Cognito, Cloudwatch, Cloudfront, CodeDeploy, Lambda, AWS Systems Manager and AWS storage services like S3, EBS
+
+
+Route 53 - Domain Name System (DNS) is a distributed system that translates human-readable domain names (e.g. example.com) into machine-readable IP addresses.  
+DNS service records cname,a records, aaa
+--------------------------------
+Cognito - Amazon Cognito provides authentication, authorization, and user management for your web and mobile apps. Your users can sign in directly with a 
+user name and password, or through a third party such as Facebook, Amazon, Google or Apple.
+
+The two main components of Amazon Cognito are user pools and identity pools. User pools are user directories that provide sign-up and sign-in options for
+your app users. Identity pools enable you to grant your users access to other AWS services.
+ You can use identity pools and user pools separately or together.
+---------------------------------------
+
+cloud watch -Amazon CloudWatch monitors your Amazon Web Services (AWS) resources and the applications you run on AWS in real time. You can use CloudWatch to
+collect and track metrics, which are variables you can measure for your resources and applications. The CloudWatch home page automatically displays metrics
+ about every AWS service you use.
+
+-----------------------------------
+Cloudfront - Amazon CloudFront is a web service that speeds up distribution of your static and dynamic web content, such as .html, .css, .js, and image files,
+ to your users
+
+-------------------------
+system manager and SSM agent in nodes
+
+Application management
+Change management
+Node management
+Operations management
+Quick Setup
+Shared resources
+--------------------------------------
+
+S3 and EBS
+
+standard frequesnt, stand-infrequent, one-zone infre, glacier instant retrival, galcier flexible, glacier deep archive
+
+
+
+Canary Deployment -Canary deployment is a technique to reduce the risk of introducing a software update in production 
+by slowly rolling out the change to a small subset of users before making it available to everybody
+
+Blue-Green Deployment (sometimes known as red-black)
+Recreate Strategy (highlander )
+Shadow Deployment
+A/B testing Deployment strategy
