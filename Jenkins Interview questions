@@ -63,3 +63,25 @@ Multiconfiguration Projects
 Folder
 GitHub organization
 Mutlibranch Pipeline
+
+
+8. )  How did you report build results to users? What ways are there to report the results?
+
+You can report via:
+
+Emails
+Messaging apps
+Dashboards
+Each has its own disadvantages and advantages. Emails for example, if sent too often, can be eventually disregarded or ignored.
+
+9. You need to run unit tests every time a change submitted to a given project. Describe in details how your pipeline would look like and what will be executed in each stage
+
+The pipelines will have multiple stages:
+
+Clone the project
+Install test dependencies (for example, if I need tox package to run the tests, I will install it in this stage)
+Run unit tests
+(Optional) report results (For example an email to the users)
+Archive the relevant logs/files
+
+10. How to secure Jenkins?
