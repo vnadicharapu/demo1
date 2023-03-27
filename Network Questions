@@ -1,0 +1,174 @@
+---- Linux 
+1. How to find logs of a specific column.
+
+    cat system.log | cut -d ' ' -f 1-6      or     cat system.log | awk '{print $1, $2}'
+    cat - reads file content                            awk command used to scan and reads the feilds and format output, NR no of line, nf last feild             
+    cut -  reads the columns  
+    -d - delimiter in this case whitespace
+    -f - which feilds to be out put
+    
+    $ echo "abc def" | cut -f 2 -d ' '
+    def
+    $ echo "abc    def" | cut -f 2 -d ' '
+
+    $ echo " abc def" | cut -f 2 -d ' '
+    abc
+
+
+    $ echo "abc def" | awk '{ print $2 }'
+    def
+    $ echo "abc    def" | awk '{ print $2 }'
+    def
+    $ echo " abc def" | awk '{ print $2 }'
+    def
+    
+2. how to compress a file?
+
+  Tar command "tar -czvf logs_archive.tar.gz * --remove-files"  to delete original file after compressions
+              "tar -xzvf logs_archive.tar.gz &"         to continue in bg add &
+              "zgrep -Hna 'string-to-search' compressedFile.tar.gz"
+              
+  -c	Create a new archive.	We use this flag whenever we need to create a new archive.
+  -z	Use gzip compression.	When we specify this flag, it means that archive will be created using gzip compression.
+  -v	Provide verbose output.	Providing the -v flag shows details of the files compressed.
+  -f	Archive file name.	Archive file names are mapped using the -f flag.
+  -x	Extract from a compressed file.	We use this flag when files need to be extracted from an archive.
+  -t - view the contents
+
+
+3. How to truncket a file?
+
+  truncating a file means removing the file contents without deleting the file.
+  sudo truncate -s 0 /var/log/nginx/access.log   -s=size
+
+4. How to clear logs?
+
+  find /var/log -type f -delete  (it deletes the files) but deleteing the file is not recommanded instead delete the content, logrotate
+      for logfile in $(ls /var/log/*.log)
+      do 
+       truncate -s 0 $logfile
+      done
+
+5. How to clear disc space in linux?
+
+  sudo df -h /dev/sda(for specific drive) (view the space in -h readable form)
+  sudo yum autoremove (to removes packages that are no longer in use)
+  sudo yum clean all (Clean cache by package manager)
+  sudo yum list installed (lists packages)
+  sudo yum remove nginx (remove particular package)
+
+6. How to configure DNS?
+
+    sudo nano /etc/resolv.conf  (add name server and IP) this will used as temporry
+    sudo nano /etc/systemd/resolved.conf  (uncomment resolved section with fallbackdns with IP)
+    ----there is resolvconf package to manage DNS----
+    -----Use dig command to know the dns used ----
+
+7. how to do patching
+
+    diff -u working/slang.c latest/slang.c  (to show differences bw files)
+    diff -u working/slang.c latest/slang.c > slang.patch  (to create a patch with the differences)
+    patch -u working/slang.c -i slang.patch  (patching a file)
+    patch -u -b working/slang.c -i slang.patch (-b to take backup before patching and -i input of patchfile name)
+    diff -ruN working/ latest/ > slang.patch (creating patching file for whole directory)
+    less slang.patch (will display the contents)
+    patch --dry-run -ruN -d working < slang.patch (r- recurssive u-unified context N- new file)
+    patch -R < myfile.patch (reverse the patch)
+    
+   https://www.howtogeek.com/415442/how-to-apply-a-patch-to-a-file-and-create-patches-in-linux/
+   ----can use patch management tools to locate easyly endpoints-----
+    
+
+8. Command for patching a specific package? Networking
+----------
+1. what is OSI model
+
+    Open Systems Interconnection - It is a 7 layer architecture with each layer having specific functionality to perform. 
+    All these 7 layers work collaboratively to transmit the data from one person to another across the globe. 
+      Physical Layer (Layer 1) - When receiving data, this layer will get the signal received and convert it into 0s and 1s and send them to the
+                                  Data Link layer, which will put the frame back together. 
+      Data Link Layer (DLL) (Layer 2)  - The data link layer is responsible for the node-to-node delivery of the message. The main function of this
+      layer is to make sure data transfer is error-free from one node to another, over the physical layer.
+      
+      Network Layer (Layer 3) :  The network layer works for the transmission of data from one host to the other located in different networks. It also 
+      takes care of packet routing i.e. selection of the shortest path to transmit the packet, from the number of routes available. The sender & receiver’s 
+      IP addresses are placed in the header by the network layer. 
+      ----routing and logical addressing (IP)--- Network layer is implemented by networking devices such as routers. 
+      
+      Transport Layer (Layer 4) :  The data in the transport layer is referred to as Segments. It is responsible for the End to End Delivery of the complete message. 
+      ----TCP and UDP----
+      
+      Session Layer (Layer 5) : This layer is responsible for the establishment of connection, maintenance of sessions, authentication, and also ensures security. 
+      
+      Presentation Layer (Layer 6):The data from the application layer is extracted here and manipulated as per the required format to transmit over the network. 
+      ----encryption and decryption---
+      
+      Application Layer (Layer 7) : These applications produce the data, which has to be transferred over the network. This layer also serves as a window 
+      for the application services to access the network and for displaying the received information to the user. 
+
+        Example: Application – Browsers, Skype Messenger, etc. 
+
+        https://www.geeksforgeeks.org/layers-of-osi-model/
+      
+2. What is DNS
+
+    Domain name system portno is 53
+     translate domain names into IP addresses, allowing the browsers to access other internet resources. A DNS record is an IP address that matches the fully-qualified domain name.
+     -- a record and cname record--
+
+3. what port DNS use
+4. Layers in OSI model
+5. http , https , tcp port
+
+    https://www.howtonetwork.com/comptia-network-study-guide-free/port-numbers-and-network-protocols/#:~:text=Port%20numbers%20uniquely%20identify%20network%20protocols%2C%20while%20protocol,number%201%204%20IGMP%20is%20protocol%20number%202
+    https://vincenttechblog.com/40-network-protocols-with-port-numbers-transport-protocols-and-meanings/
+    
+    
+6. what is IP
+
+  Internet Protocal
+
+7. TCP/ IP model
+
+    https://www.geeksforgeeks.org/tcp-ip-model/
+
+8. what happens when you mention url in internet.
+9. http vs https
+
+------------------------------
+
+1. what is VPC? what is diff between public and private subnet?
+
+  A Virtual Private Cloud (VPC) is a virtual network dedicated to your AWS account. It is a private area logically isolated from other virtual networks in the AWS Cloud
+  A public subnet is a subnet that is associated with a route table that has a route to an Internet gateway.
+  A private subnet is a subnet that is associated with a route table that doesn’t have a route to an internet gateway. Uses NAT
+  we have many security measures and tools to prevent unwanted traffic like Security Groups, NACL, AWS WAF on top of existing VPC,Subnets and Routing Table to shape the traffic.
+  
+
+2. How to secure your EC2?
+
+  using security groups, Iam roles and backups, avoiding malware
+
+3. what is diff between permission and trust relationship?
+4. what is diff between VPC peering and transit gateway?
+
+  VPC Peering provides Full-mesh architecture while Transit Gateway provides hub-and-spoke architecture.
+  AWS VPC Peering connection is a networking connection between two VPCs that enables you to route traffic between them privately. 
+  Instances in either VPC can communicate with each other as if they are within the same network.
+  AWS Transit Gateway is a fully managed service that connects VPCs and On-Premises networks through a central hub without relying
+  on numerous point-to-point connections or Transit VPC.
+
+5. What is private link?
+6. What are storage services available?
+7. What is Cloudfront? How to deploy Cloudfront?
+8. How to monitor VPC?
+9. What is Elastic Beanstalk?
+10. What are diff type of load balancer? and use of that.
+11. Diff between ALB & NLB?
+12. What are the diff type of storage available in S3?
+13. How to get log of ALB?
+14. What services are required to keep in public subnet?
+15. What is auto scaling? How to configure?
+16. How to design/deploy a highly available apllication?
+17. How to deploy multi region?
+18. Diff between terraform and cloudformation?
