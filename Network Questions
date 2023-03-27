@@ -80,6 +80,16 @@
     
 
 8. Command for patching a specific package? Networking
+
+9. Hard Link :
+        A hard link acts as a copy (mirrored) of the selected file. It accesses the data available in the original file.
+        If the earlier selected file is deleted, the hard link to the file will still contain the data of that file.
+        ln source.file hardlink.file
+   Soft Link :
+        A soft link (also known as Symbolic link) acts as a pointer or a reference to the file name. It does not access the data available in the
+        original file. If the earlier file is deleted, the soft link will be pointing to a file that does not exist anymore.
+
+        ln -s source.file softlink.file
 ----------
 1. what is OSI model
 
