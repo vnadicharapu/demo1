@@ -159,16 +159,75 @@
   on numerous point-to-point connections or Transit VPC.
 
 5. What is private link?
+
+    AWS PrivateLink is a networking feature provided by Amazon Web Services ( AWS) that eases and secures connectivity between Amazon Virtual Private Clouds ( VPCs ), 
+    other Amazon cloud services and on-premises applications.
+
 6. What are storage services available?
+
+    1, Simple Storage Service (S3)
+    2. Elastic Block Storage (EBS)
+    3. Elastic File System (EFS)
+    4. Amazon FSx for Lustre
+    5. Amazon S3 Glacier
+    6. Amazon FSx for Windows File Server
+    7. AWS Storage Gateway
+
 7. What is Cloudfront? How to deploy Cloudfront?
+
+    Amazon CloudFront is a web service that speeds up distribution of your static and dynamic web content, such as .html, .css, .js, and image files, to your users. CloudFront
+    delivers your content through a worldwide network of data centers called edge locations. 
+    
+    
+
 8. How to monitor VPC?
+
+    You can use VPC Flow Logs to capture detailed information about the traffic going to and from network interfaces in your VPCs. You can use IPAM to plan, track, 
+    and monitor IP addresses for your workloads.
+
 9. What is Elastic Beanstalk?
+
+    AWS Elastic Beanstalk is an orchestration service offered by Amazon Web Services for deploying applications which orchestrates various AWS services, including EC2, S3, 
+    Simple Notification Service (SNS), CloudWatch, autoscaling, and Elastic Load Balancers.
+
 10. What are diff type of load balancer? and use of that.
+
+    https://k21academy.com/wp-content/uploads/2020/09/Loadbalancer_Diagram-03-2048x1225.png
+
 11. Diff between ALB & NLB?
 12. What are the diff type of storage available in S3?
 13. How to get log of ALB?
+
+    Elastic Load Balancing publishes a log file for each load balancer node every 5 minutes. Log delivery is eventually consistent. The load balancer can deliver multiple logs for the same period. 
+    This usually happens if the site has high traffic.
+    On the Edit load balancer attributes page, do the following:
+
+            For Monitoring, turn on Access logs.
+
+            Choose Browse S3 and select a bucket to use. Alternatively, enter the location of your S3 bucket, including any prefix.
+
+            Choose Save changes.
+
 14. What services are required to keep in public subnet?
 15. What is auto scaling? How to configure?
 16. How to design/deploy a highly available apllication?
+
+        iNFRA AS CODE
+        A VPC.
+        Four subnets (two private and two public).
+        An application load balancer.
+        EC2 instances.
+        An auto-scaling group that scales the instances horizontally.
+        A PostgreSQL database replicated across to a different availability zone.
+
 17. How to deploy multi region?
+
+    The Multi-Region Infrastructure Deployment guidance helps customers more easily control updates to infrastructure for applications that are deployed 
+    across primary and secondary Regions. This guidance sets up multi-region architectures and maintains consistency of workloads. This guidance 
+    automatically provisions and configures AWS CodePipeline to automate the continuous integration/continuous delivery (CI/CD) pipeline for CloudFormation 
+    templates in the AWS Cloud. AWS CodePipeline is a continuous integration (CI) orchestration service with multiple deployment options to help developers 
+    quickly deploy and manage their software. Using AWS CodePipeline makes it easy to continuously build and test AWS CloudFormation templates whenever
+    they change.
 18. Diff between terraform and cloudformation?
+
+    https://www.educba.com/terraform-vs-cloudformation/
