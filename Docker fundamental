@@ -38,3 +38,59 @@ volumes
 25. docker volume inspect my-vol
 26. docker run -dp 80:80 -- name webapp -v my-vol:/usr/local/apache2/htdocs httpd  - stop the container and mount the volume
 27. docker volume rm my-vol and docker volume prune
+28. Docker compose
+
+                  version: '3'
+                  services:
+                        jenkins:
+                              container_name: jenkins
+                              image: jenkins/jenkins
+                              ports:
+                                    - "8080 : 8080"
+                              volumes:
+                                    - "$PWD"/jenkins_home : /var/jenkins_home"
+                              networks:
+                                    - net
+                         remote_host:
+                              container_name: 
+                              image: 
+                              build:
+                                 context: centos7
+                              networks:
+                                    - net
+                          db_host:
+                              ocntainer-name:
+                              image:
+                              environment:
+                                     - "my_sql_password = 1234"
+                              volumes:
+                                    - "$PWD/db_data : /var/lin/mysql"
+                              networks:
+                                    - net
+                              
+                                    
+                                    
+                                    
+         Sudo chown 1000:1000 jenkins_home -R
+         docker-compose up -d
+         docker logs -f jenkins
+         
+    29. Docker file 
+    
+                  FROM centos
+                  MAINTAINER vijaynadicharapu@gmail.com
+                  RUN useradd remote_user && \
+                        echo "1234" | passwd remote_user --stdin && \
+                        mkdir /home/remote_user/.ssh
+                        chmod 700 /home/remote-user/.ssh
+                  COPY remote-key.pub /home/remote_user/.ssh/authorized_keys
+                  RUN chown remote_user: remote_user -R /home/remote-user/.ssh && \
+                        chmod 600 /home/remote-user/.ssh/authorized-keys
+                  RUN- /usr/sbin/sshd-keygen
+                  CMD .user/sbin/sshd -D
+                  
+                  
+                  
+   30. BASH script to take sql backup
+                  #! /bin/bash
+                  mysqldb -u root -h $db_host -P $db_password
