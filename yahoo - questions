@@ -1,0 +1,108 @@
+1.What is Jenkins and its features?
+
+  it is an open-source server that allows all the developers to build, test and deploy software. It works or runs on java as it is written in java. 
+  By using Jenkins we can make a continuous integration of projects(jobs) or end-to-endpoint automation.
+
+2.Jenkins pipleine job ?
+3.Scripted and declarative pipeline ?
+
+  https://medium.com/globant/jenkins-pipeline-declarative-vs-scripted-21f8688ee16a
+
+4.How to configure job in jenkins?
+5.Circuit breaker in jenkins pieline ?
+6.What is groovy scripting ?
+7.How is Github repo url used in jenkins pipeline script ?
+8.what is ansible and how it is different from other tools?
+9.what are handlers in ansible ?
+
+  In Ansible, handlers are just like any regular tasks. The difference between handlers and regular tasks is that handlers only run when 'notified'
+  using the notify directive. Handlers are usually used to start, restart, reload and stop services on target nodes only when 
+  there is a change in the state of the task, and not when no change is made
+
+10.diff between ansible handlers and modules ?
+
+  Modules represent distinct units of code, each one with specific functionality. Basically, they are standalone scripts written for a particular job and 
+  are used in tasks as their main functional layer.
+
+  We build Ansible modules to abstract complexity and provide end-users with an easier way to execute their automation tasks without needing all the details.
+  This way, some of the cognitive load of more complex tasks is abstracted away from Ansible users by leveraging the appropriate modules. 
+
+11.How to execute playbooks parallely in 100 nodes?
+
+  adding 100nodes to inventory or host file
+  
+  The easiest method would be to split the playbook in different.yml files, and execute each from a different terminal. Or run them with the ansible-parrelel pip package.
+
+12.What is a web server?
+
+  A web server is a computer or a program that stores, processes, and delivers website files or web pages to users over the internet12345. 
+  It uses HTTP and other protocols to respond to client requests145. A web server can have a hardware and a software side, with each having a 
+  specific role123. A web server can also support other services like email and file transfer5
+
+13.How http requests works?
+
+  HTTP is an application layer protocol built on top of TCP that uses a client-server communication model. HTTP clients and servers communicate through
+  request and response messages. 
+  The three main HTTP message types are GET, POST, and HEAD.
+
+14.Https and Http ?
+15.what is SSL handshake ?
+
+  client hello - server hello -authentication and pre-master key - decryption master key - encryption master key
+  
+
+16.AWS EC2 features?
+
+  global infrastructure - Cost and Capacity Optimization - storage - networking - maintanance - os 
+
+17.AWS VPC creation and subnets ?
+18.Auto scaling group in AWS, its policies.
+19.AWS cloudwatch
+
+  AWS CloudWatch does not collect the memory metrics from the EC2 Instances. In order, to get the memory usage we need to need to install the CloudWatch 
+  Agent on EC2 Instance. In this blog, we will install the AWS CloudWatch agent using AWS System Manager & collect memory metrics in the AWS CloudWatch 
+  console, after that we will create an alarm in AWS CloudWatch which will send an alert email notification when the memory usage goes above 75% using 
+  AWS SNS topic.
+
+20.what is routing , how it works ?
+
+  ROUTING is the process of selecting a path through an internetwork over which to transmit packets to a destination host or hosts and then having devices 
+  called routers forward the packets to those hosts. For routing to occur, a routable protocol such as TCP/IP or IPX/SPX must be used.
+
+21.Various Record types ?
+
+  https://en.wikipedia.org/wiki/List_of_DNS_record_types#:~:text=Resource%20records%20%20%20%20Type%20%20,Unique%20Identifier%20...%20%2018%20more%20rows%20
+
+22.How DNS works ?
+23.Howb does web browser communicate with Web server ?
+24.What is a kernel ? where it resides ?
+25.How do you sort webserver logs based on different status codes and ip addresses ?
+
+  awk, grep, tail 
+
+26.How to check file size in linux?
+
+  du -h test
+
+27.diff between user and groups in linux ?
+
+  User is an account, either for real person or a daemon software. You can log in with your user account, or others using su. 
+  Groups can be thought of as levels of privilege. A person who is part of a group can view or modify files belonging to that group, depending on the
+  permissions of that file
+
+28.How do you clear disk space in linux ?
+
+  sudo yum autoremove, sudo yum clean all
+
+29.how to identify which file is consuming more space ?
+
+    du -a /dir/ | sort -n -r | head -n 20.
+     du -hsx * | sort -rh | head -10
+
+30.What is Application server ?
+
+  
+What Does Application Server Mean? An application server is a type of server designed to install, operate and host applications and associated services for end users, IT services and organizations.
+
+31.What is CIDR ?
+32.What is a load balancer and how it works ?
