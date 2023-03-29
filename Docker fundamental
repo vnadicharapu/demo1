@@ -94,3 +94,6 @@ volumes
    30. BASH script to take sql backup
                   #! /bin/bash
                   mysqldb -u root -h $db_host -P $db_password
+                  
+                  
+               BASH   https://dannyda.com/2020/12/22/what-are-0-etc-in-linux-bash-shell-script-what-do-they-mean-what-are-n-etc/
